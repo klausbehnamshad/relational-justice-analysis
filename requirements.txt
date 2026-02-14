@@ -1,0 +1,27 @@
+# Analyseinfrastruktur v4 – Qualitative Interviewforschung
+# =====================================================
+# Installation: pip install -r requirements.txt
+# Oder: conda create -n analyse python=3.10 && conda activate analyse && pip install -r requirements.txt
+
+# Core NLP
+spacy>=3.5,<4.0
+nltk>=3.8
+
+# Data & Analysis
+pandas>=2.0
+numpy>=1.24
+
+# Configuration
+pyyaml>=6.0               # Framebook als YAML
+
+# Visualization (optional, nur für Notebook)
+matplotlib>=3.7
+seaborn>=0.12
+
+# Export
+openpyxl>=3.1              # Excel-Export
+
+# Spacy-Modelle separat installieren:
+# python -m spacy download de_core_news_sm
+# python -m spacy download en_core_web_sm   (optional)
+# python -m spacy download fr_core_news_sm  (optional)

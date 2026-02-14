@@ -1,0 +1,719 @@
+# ============================================================
+# FRAMEBOOK v3.0 – Meta-Frame-Architektur
+# Theoriegeleitete, themenunabhängige Analysekategorien
+# ============================================================
+#
+# ZWEI-EBENEN-MODELL:
+#   Ebene 1: Dieses File → Meta-Frames (universell, immer aktiv)
+#   Ebene 2: overlays/*.yaml → Projektspezifische Erweiterungen
+#
+# Laden mit Overlay:
+#   fb = Framebook('config/framebook_v3.yaml', overlay='overlays/housing_lux.yaml')
+#
+# Laden ohne Overlay (nur Meta-Ebene):
+#   fb = Framebook('config/framebook_v3.yaml')
+#
+# Jede algorithmische Markierung ist ein epistemischer Vorschlag,
+# kein Befund. Die Muster sind theoriegeleitet, aber heuristisch.
+# Sie ersetzen nicht die qualitative Interpretation, sondern
+# bereiten sie vor.
+# ============================================================
+
+version: "3.1"
+beschreibung: "Meta-Frame-Architektur v3.1 FREEZE – mit expliziter Frame-Klassifikation"
+erstellt: "2026-02-14"
+vorgaenger: "framebook_v3.yaml"
+autor: ""
+notizen: >
+  v3.1 FREEZE – Stabile Referenzversion für Vergleichsanalysen.
+
+  Änderungen gegenüber v3.0:
+    - frame_classification: Explizite A/S/K-Klassifikation für JusticeAnalyzer
+    - VOKATION_BERUFUNG: Endgültig nur Overlay (nicht im Meta-Framebook)
+    - Epistemischer Status aller Outputs klargestellt
+
+  Diese Version ist die Referenz für:
+    - Cross-Interview-Vergleiche
+    - Mehrsprachige Erweiterungen (Phase 2)
+    - Publikationen und Methodendokumentation
+
+  Jede algorithmische Markierung ist ein epistemischer Vorschlag, kein Befund.
+
+
+# ============================================================
+# FRAME-KLASSIFIKATION FÜR JUSTICE-ANALYSE
+# ============================================================
+#
+# Definiert die Rolle jedes Meta-Frames im (Un)Gerechtigkeitsmodell.
+# Der JusticeAnalyzer liest diese Klassifikation aus dem Framebook –
+# keine Hardcodierung im Python-Code.
+#
+# A-Frames (Anspruch): Was sein SOLLTE – Legitimität, Autonomie, Solidarität
+# S-Frames (Struktur): Was IST und blockiert – Ökonomisierung, Bürokratie, Exklusion
+# K-Frames (Kontext):  Moderieren, erzeugen aber keine Spannung
+#   - verstärkend: VULNERABILITAET (+10%)
+#   - abschwächend: NORMALISIERUNG (-10%)
+#   - neutral: kein Einfluss auf Justice Score
+#
+# Spannungsaxiom:
+#   (Un)Gerechtigkeit = mindestens 1 A-Frame + 1 S-Frame im selben Turn
+#
+# ============================================================
+
+frame_classification:
+  anspruch:
+    - LEGITIMITAET_GERECHTIGKEIT
+    - AUTONOMIE_SELBSTBESTIMMUNG
+    - SOLIDARITAET_GEMEINSCHAFT
+  struktur:
+    - OEKONOMISIERUNG
+    - BUEROKRATISCHE_ORDNUNG
+    - EXKLUSION_OTHERING
+    - INSTITUTIONELLE_LOGIK
+  kontext:
+    verstaerkend:
+      - VULNERABILITAET
+    abschwächend:
+      - NORMALISIERUNG
+    neutral:
+      - OEFFENTLICHER_DISKURS
+
+
+# ============================================================
+# MODUL A: NARRATIVE STRUKTUR (Schütze, Ricoeur)
+# ============================================================
+
+textsorten:
+
+  NARRATION:
+    beschreibung: "Sequentielles Erzählen von Ereignissen"
+    theorie: "Schütze: Erzählzwänge, Detaillierung, Gestaltschließung"
+    indikatoren:
+      de:
+        - "(dann|danach|daraufhin|anschließend|plötzlich|auf einmal)"
+        - "(letzte woche|letzten monat|eines tages|damals|neulich)"
+        - "ich (bin|habe|hatte|war|kam|ging|konnte|musste)\\b"
+        - "(passiert|geschehen|ergeben|erlebt)"
+        - "(nach hause|zur arbeit|ins büro|zum arzt)"
+      en:
+        - "(then|afterwards|suddenly|all of a sudden|next)"
+        - "(last week|last month|one day|back then|recently)"
+        - "I (went|had|was|came|could|got)\\b"
+        - "(happened|occurred|experienced)"
+      fr:
+        - "(puis|ensuite|soudain|tout à coup|après)"
+        - "(la semaine dernière|un jour|à l'époque)"
+        - "je (suis|ai|avais|étais)\\b"
+
+  ARGUMENTATION:
+    beschreibung: "Bewertung, Rechtfertigung, Reflexion"
+    theorie: "Schütze: Eigentheoretisierung; Toulmin: Argumentationsstruktur"
+    indikatoren:
+      de:
+        - "(weil|denn|deshalb|deswegen|daher|nämlich)"
+        - "(ich (denke|glaube|finde|meine)|meiner meinung)"
+        - "(das (ist|war) (ja|doch|eben|halt))"
+        - "(das problem|der punkt|die frage|der sinn)"
+        - "(sollte|müsste|könnte|dürfte)\\b"
+        - "(als ob|so als|quasi)"
+        - "(nicht .{0,10}, sondern)"
+        - "(das kann doch nicht|das darf nicht)"
+      en:
+        - "(because|since|therefore|that's why)"
+        - "(I (think|believe|feel)|in my opinion)"
+        - "(the problem|the point|the question)"
+        - "(should|would|could|ought to)\\b"
+        - "(as if|as though)"
+        - "(not .{0,10}, but rather)"
+      fr:
+        - "(parce que|car|donc|c'est pourquoi)"
+        - "(je (pense|crois|trouve)|à mon avis)"
+        - "(le problème|la question)"
+
+  BESCHREIBUNG:
+    beschreibung: "Zustandsschilderung, Routinen, Gegebenheiten"
+    theorie: "Schütze: Hintergrundkonstruktionen"
+    indikatoren:
+      de:
+        - "(es gibt|man hat|wir haben|dort ist)"
+        - "(immer|jeden tag|normalerweise|in der regel|meistens)"
+        - "(seit \\w+ (jahren|monaten|wochen))"
+        - "(arbeite ich|bin ich|mache ich) .{0,20} (seit|schon)"
+      en:
+        - "(there is|there are|we have|it has)"
+        - "(always|every day|usually|normally|most of the time)"
+        - "(for \\w+ (years|months|weeks))"
+      fr:
+        - "(il y a|on a|nous avons)"
+        - "(toujours|chaque jour|normalement|d'habitude)"
+        - "(depuis \\w+ (ans|mois))"
+
+
+# ============================================================
+# MODUL A.2: PROZESSSTRUKTUREN (Schütze)
+# ============================================================
+
+prozessstrukturen:
+
+  HANDLUNGSSCHEMA:
+    beschreibung: "Aktive Gestaltung, Planungshandeln, Intentionalität"
+    theorie: "Schütze: Biografisches Handlungsschema"
+    indikatoren:
+      de:
+        - "ich (wollte|habe beschlossen|habe mich entschieden|plane)"
+        - "ich (versuche|bemühe mich|arbeite daran)"
+        - "(mein ziel|meine absicht|mein antrieb|mein wunsch)"
+        - "aus überzeugung"
+        - "ich (konzentriere|fokussiere) mich"
+      en:
+        - "I (wanted|decided|chose|plan)"
+        - "I (try|am trying|work on)"
+        - "(my goal|my intention|my motivation)"
+
+  VERLAUFSKURVE:
+    beschreibung: "Kontrollverlust, Erleiden, Überwältigung"
+    theorie: "Schütze: Erleidensprozess, konditionelle Verkettung"
+    indikatoren:
+      de:
+        - "(ich kann nicht mehr|es reicht nicht|geht nicht mehr)"
+        - "(alleingelassen|ausgeliefert|hilflos|ohnmächtig)"
+        - "man (wird|ist|fühlt sich)"
+        - "(lastet|drückt|erdrückt|überwältigt)"
+        - "zum ersten mal .{0,30}(gefühl|angst|nicht mehr)"
+        - "(einfach|nur noch) (geweint|aufgegeben|zusammengebrochen)"
+        - "so einfach ist das nicht"
+      en:
+        - "(I can't anymore|it's not enough|can't go on)"
+        - "(abandoned|helpless|powerless|overwhelmed)"
+        - "you (just|can't|feel)"
+        - "(weighs on|crushing|drowning)"
+
+  WANDLUNG:
+    beschreibung: "Umorientierung, neue Perspektive, Transformation"
+    theorie: "Schütze: Wandlungsprozesse"
+    indikatoren:
+      de:
+        - "(aber|doch) .{0,20}(hoffnung|glaub|denke|merke)"
+        - "inzwischen"
+        - "(langsam|allmählich) .{0,15}(besser|anders|versteht)"
+        - "(neue|frische|junge) .{0,10}(ideen|kollegen|perspektiv)"
+        - "(bewegt|verändert|gewandelt)"
+      en:
+        - "(but|however) .{0,20}(hope|believe|realize)"
+        - "(by now|meanwhile|these days)"
+        - "(slowly|gradually) .{0,15}(better|different|understand)"
+
+
+# ============================================================
+# MODUL B: SUBJEKTPOSITIONIERUNG (Bamberg, Lucius-Hoene)
+# ============================================================
+
+pronomen:
+  de:
+    ICH: "\\bich\\b"
+    WIR: "\\bwir\\b"
+    MAN: "\\bman\\b"
+    FREMDGRUPPE: "(die leitung|die politik|die gesellschaft|von oben|die da)"
+  en:
+    ICH: "\\bI\\b"
+    WIR: "\\bwe\\b"
+    MAN: "\\b(you|one|people)\\b"
+    FREMDGRUPPE: "(the management|the government|the system|those people|they up there)"
+  fr:
+    ICH: "\\bje\\b"
+    WIR: "\\bnous\\b"
+    MAN: "\\bon\\b"
+    FREMDGRUPPE: "(la direction|la politique|le système|ceux d'en haut)"
+
+agency:
+
+  AKTIV_HANDELND:
+    beschreibung: "Subjekt handelt, gestaltet, entscheidet"
+    theorie: "Positioning Theory: High agency"
+    indikatoren:
+      de:
+        - "ich (versuche|bemühe|konzentriere|arbeite|wollte|habe .{0,10}gewählt)"
+        - "ich (mache|tue|gebe|nehme|schaffe)"
+      en:
+        - "I (try|work|chose|decided|manage|found|applied)"
+        - "I (do|make|give|take|create|build|start)"
+        - "we (decided|chose|managed|found|built|organized)"
+
+  ERLEIDEND_PASSIV:
+    beschreibung: "Subjekt erleidet, wird getrieben, hat keinen Einfluss"
+    theorie: "Positioning Theory: Low agency / Victimhood"
+    indikatoren:
+      de:
+        - "man (fühlt sich|wird|ist|kann nicht)"
+        - "(lastet|drückt|trifft) .{0,15}(mich|uns|einem|auf)"
+        - "ich (kann nicht|muss|wurde|bin .{0,10}worden)"
+      en:
+        - "you (feel|just|can't|never)"
+        - "I (can't|have to|was forced|am stuck|had no)"
+        - "(weighs on|hits|strikes) .{0,15}(me|us)"
+        - "(they|he|she) (never|didn't|wouldn't|refused to) .{0,10}(call|respond|answer|help)"
+        - "we (couldn't|weren't able|had no choice|were refused|were told)"
+        - "(it wasn't|it's not) .{0,10}(possible|allowed|an option)"
+        - "(I|we) had to .{0,10}(wait|leave|accept|give up)"
+        - "(no one|nobody) .{0,10}(helped|cared|responded|called)"
+        - "(nothing (I|we) .{0,10}(could|can) do)"
+        - "(stuck|trapped|no way out|no choice)"
+        - "(they (said|told) .{0,10}(no|not possible|we can't))"
+        - "(always the same|every time|again and again)"
+
+  MORALISCH_REFLEKTIEREND:
+    beschreibung: "Subjekt bewertet moralisch, positioniert sich normativ"
+    theorie: "Positioning Theory: Moral positioning"
+    indikatoren:
+      de:
+        - "(aus überzeugung|der sinn|die verantwortung)"
+        - "(das kann doch nicht|das darf nicht|wer kümmert sich)"
+        - "(nicht wir .{0,10} sondern|das problem ist)"
+      en:
+        - "(out of conviction|the meaning|the responsibility)"
+        - "(that can't be right|who takes care)"
+        - "(it's not us .{0,10} it's|the problem is)"
+        - "(should|shouldn't) .{0,10}(be|have|do)"
+        - "(fair|unfair|right|wrong|just|unjust)"
+
+
+# ============================================================
+# MODUL C: DISKURSIVE RAHMUNG – META-FRAMES
+# (Foucault, Goffman, Entman, Wodak)
+# ============================================================
+
+frames:
+
+  OEKONOMISIERUNG:
+    beschreibung: "Phänomene werden durch Kosten-, Effizienz- und Marktlogik gerahmt"
+    theorie: "Gouvernementalität (Foucault/Bröckling); NPM-Diskurs"
+    indikatoren:
+      de:
+        - "(effizien|zahlen|tabelle|kosten|sparen|leistung|kennzahl)"
+        - "(weniger zeit|mehr .{0,10}(patienten|arbeit|druck))"
+        - "(wovon .{0,15} leben|miete|geld)"
+      en:
+        - "(efficien|numbers|cost|saving|performance|metrics|budget)"
+        - "(market|price|afford|expensive|cheap|investment)"
+        - "(money|salary|income|pay|wage|financial)"
+
+  EXKLUSION_OTHERING:
+    beschreibung: "Grenzen zwischen Zugehörigkeit und Ausschluss; Wir/Die-Konstruktionen"
+    theorie: "Othering (Said, Spivak); Inklusion/Exklusion (Luhmann); Stigma (Goffman)"
+    indikatoren:
+      de:
+        - "(diskriminier|ausgrenz|benachteilig|ausgeschlossen)"
+        - "(bevorzug|einheimisch|nicht von hier|fremd)"
+        - "(die anderen|nicht dazugehör|anders behandelt)"
+      en:
+        - "(discriminat|exclud|disadvantag|left out|shut out)"
+        - "(prefer .{0,15}(local|national|citizen|their own))"
+        - "(foreign|outsider|not from here|immigrant|different)"
+        - "(they (changed|wouldn't|refused|didn't want))"
+        - "(because (of )?my (name|accent|background|origin|appearance))"
+        - "(not .{0,10}(welcome|wanted|accepted|included))"
+        - "(us (and|vs|versus|against) them)"
+
+  INSTITUTIONELLE_LOGIK:
+    beschreibung: "Bezugnahme auf Strukturen, Systeme, Institutionen als handelnde/bestimmende Einheiten"
+    theorie: "Institutionalismus (North, DiMaggio/Powell); Strukturkritik; Institutionelle Logiken (Thornton)"
+    indikatoren:
+      de:
+        - "(system|struktur|institution).{0,15}(kaputt|versag|problem|so|funktioniert)"
+        - "(nicht wir|nicht die .{0,10}|die schuld)"
+        - "(politik .{0,15} (redet|wenig|nichts|macht))"
+        - "(von oben|die leitung|die da oben|die behörde)"
+      en:
+        - "(system|structure|institution).{0,10}(broken|fail|work|designed|set up)"
+        - "(it's not (us|me|the people)|not the (workers|individuals))"
+        - "(management|from above|those in charge|the authorities)"
+        - "(the (rules|regulations|law|policy) .{0,10}(say|require|prevent|allow))"
+        - "(supposed to|meant to|designed to)"
+
+  SOLIDARITAET_GEMEINSCHAFT:
+    beschreibung: "Wir-Konstruktionen als Ressource; kollektive Identität und Zusammenhalt"
+    theorie: "Solidaritätstheorie (Durkheim, Honneth); Collective Identity"
+    indikatoren:
+      de:
+        - "(wir .{0,15}(halten|zusammen|team|familie|gemeinsam))"
+        - "(kollegen|gemeinschaft|füreinander|nachbarschaft)"
+        - "(trägt mich|gibt mir kraft|sind wie)"
+      en:
+        - "(we .{0,15}(stick together|team|family|support|help each other))"
+        - "(colleagues|community|for each other|neighbourhood|neighbors)"
+        - "(together|collective|solidarity|mutual)"
+        - "(our (group|people|community|circle))"
+
+  BUEROKRATISCHE_ORDNUNG:
+    beschreibung: "Administrative Logik, Dokumentenpflicht, Verfahren als Normalität oder Hürde"
+    theorie: "Bürokratie (Weber); Street-Level Bureaucracy (Lipsky); Paperwork (Graeber)"
+    indikatoren:
+      de:
+        - "(bürokratie|antrag|formular|dokument|bescheid|behörde)"
+        - "(nachweisen|belegen|vorlegen|einreichen)"
+        - "(genehmig|papiere|unterlagen|verfahren)"
+      en:
+        - "(bureaucra|paperwork|application|document|form|procedure)"
+        - "(submit|provide|prove|show .{0,10}(proof|evidence|document))"
+        - "(they (asked|wanted|required|needed) .{0,10}(papers|documents|proof))"
+        - "(permit|visa|contract|certificate|registration)"
+        - "(office|authority|administration|official)"
+
+  AUTONOMIE_SELBSTBESTIMMUNG:
+    beschreibung: "Handlungsfähigkeit, eigene Entscheidungen, Selbstwirksamkeit"
+    theorie: "Agency-Diskurs; Empowerment; Capability Approach (Sen/Nussbaum)"
+    indikatoren:
+      de:
+        - "(selbst (entschied|bestimm|gemacht))"
+        - "(frei|unabhängig|eigenständig|autonom)"
+        - "(mein .{0,10}(weg|entscheidung|wahl|recht))"
+      en:
+        - "(my (own|choice|decision|way|right))"
+        - "(free|independent|autonomous|on my own)"
+        - "(I (chose|picked|decided|built) .{0,10}(my|for myself))"
+        - "(make .{0,10}(own|my) .{0,10}(choice|decision|life))"
+        - "(control|agency|empowered|capable)"
+
+  NORMALISIERUNG:
+    beschreibung: "Herstellung oder Infragestellung von Normalität"
+    theorie: "Normalismus (Link); Normalisierungsmacht (Foucault)"
+    indikatoren:
+      de:
+        - "(normal|selbstverständlich|üblich|wie alle anderen)"
+        - "(nicht normal|unnormal|ungewöhnlich)"
+        - "(so ist das (eben|halt)|das ist einfach so)"
+      en:
+        - "(normal|ordinary|typical|like everyone else|natural)"
+        - "(not normal|unusual|different from|unlike)"
+        - "(that's (just|how) .{0,10}(is|works|it is))"
+        - "(supposed to|expected to|should be|used to it)"
+        - "(get used to|you (just|eventually) .{0,10}(accept|adapt|learn))"
+
+  VULNERABILITAET:
+    beschreibung: "Verletzlichkeit, Prekarität, Schutzlosigkeit"
+    theorie: "Vulnerability Studies (Butler, Fineman); Prekaritätsforschung"
+    indikatoren:
+      de:
+        - "(verletzlich|schutzlos|ausgeliefert|prekär|unsicher)"
+        - "(kein (schutz|netz|rückhalt|halt))"
+        - "(angst .{0,15}(verlier|passier|werd))"
+      en:
+        - "(vulnerab|precarious|insecure|exposed|unprotected)"
+        - "(no (safety net|protection|support|backup))"
+        - "(afraid .{0,15}(lose|happen|get|become))"
+        - "(at risk|uncertain|unstable|fragile)"
+        - "(depend on|at the mercy of|rely on)"
+        - "(can't (plan|predict|be sure|know))"
+
+  OEFFENTLICHER_DISKURS:
+    beschreibung: "Bezug auf gesellschaftliche Debatten, Medien, Sagbarkeitsregeln"
+    theorie: "Diskursordnung (Foucault); Sagbarkeit (Butler)"
+    indikatoren:
+      de:
+        - "(corona|pandemie|klatschen|öffentlich)"
+        - "(gesellschaft|aufmerksamkeit|medien)"
+        - "(es heißt|man sagt|dann heißt es)"
+      en:
+        - "(covid|pandemic|public|political)"
+        - "(society|attention|media|news|debate)"
+        - "(they say|people say|it's always said|everyone knows)"
+        - "(the narrative|the discourse|the rhetoric)"
+
+  LEGITIMITAET_GERECHTIGKEIT:
+    beschreibung: "Gerechtigkeitsansprüche, Legitimität, moralische Ordnung, Fairness"
+    theorie: "Gerechtigkeitstheorie (Rawls); Anerkennungstheorie (Honneth); Moral Economy (Thompson, Scott)"
+    indikatoren:
+      de:
+        - "(gerecht|ungerecht|fair|unfair)"
+        - "(recht|anspruch|verdien|zusteh)"
+        - "(schuld|verantwort|pflicht)"
+        - "(respekt|würde|anerkennung)"
+      en:
+        - "(fair|unfair|just|unjust|justice|injustice)"
+        - "(right|rights|entitle|deserve|earn)"
+        - "(blame|fault|responsible|accountable)"
+        - "(respect|dignity|recognition|acknowledge)"
+        - "(should|shouldn't) .{0,15}(be|have|treat|allow)"
+        - "(it's (not )?(right|fair|ok) .{0,10}(that|to|when))"
+        - "(equal|unequal|double standard)"
+
+
+# ============================================================
+# MODUL C.2: META-TOPOI
+# ============================================================
+
+topoi:
+
+  VERANTWORTUNG:
+    beschreibung: "Topos der Verantwortung: Wer ist zuständig?"
+    theorie: "Topoi-Analyse nach Wengeler/Kienpointner"
+    indikatoren:
+      de:
+        - "wer (kümmert|sorgt) sich .{0,15} wenn"
+        - "(verantwortung|pflicht|gewissen)"
+        - "man kann nicht einfach"
+      en:
+        - "who .{0,15}(takes care|looks after|is responsible) .{0,15} if"
+        - "(responsibility|duty|conscience|obligation)"
+        - "you can't just"
+        - "(whose (fault|job|responsibility|problem))"
+
+  UNVEREINBARKEIT:
+    beschreibung: "Topos der Unvereinbarkeit: Zwei Logiken kollidieren"
+    theorie: "Topoi-Analyse"
+    indikatoren:
+      de:
+        - "als ob .{0,30} (zahlt|reicht|genügt)"
+        - "(aber|doch) so einfach ist das nicht"
+        - "das kann doch nicht .{0,10} sinn"
+      en:
+        - "as if .{0,30} (pays|enough)"
+        - "(but|yet) it's not that simple"
+        - "(can't (have|do|be) both)"
+        - "(on paper .{0,15}(but|however))"
+
+  KNAPPHEIT:
+    beschreibung: "Topos der Knappheit: Ressourcenmangel als Erklärungsmuster"
+    theorie: "Verteilungsdiskurs; Knappheitstopos"
+    indikatoren:
+      de:
+        - "(knapp|wenig|mangel|nicht genug|fehlen)"
+        - "(platz|wohnung|geld|zeit) .{0,10}(reicht nicht|fehlt|knapp)"
+      en:
+        - "(scarce|shortage|not enough|lack of|limited)"
+        - "(no (room|space|options|time|money))"
+        - "(too (many|few|little|expensive|long))"
+        - "(can't (find|afford|get|access))"
+        - "(waiting (list|time|period|years))"
+
+  LEISTUNG_VERDIENST:
+    beschreibung: "Topos der Leistung: Wer sich anstrengt, verdient Anerkennung"
+    theorie: "Meritokratie-Diskurs; Topoi-Analyse nach Wengeler"
+    indikatoren:
+      de:
+        - "(geleistet|angestrengt|verdient|gearbeitet .{0,15}(hart|viel))"
+        - "(steuern zahlen|beitragen|einzahlen)"
+      en:
+        - "(worked (hard|for)|earned|contributed|paid (taxes|dues))"
+        - "(deserve|merit|effort|try .{0,15}(best|hard|everything))"
+        - "(I (always|never missed)|on time|reliable)"
+
+  WANDEL:
+    beschreibung: "Topos des Wandels: Dinge verändern sich"
+    theorie: "Topoi-Analyse"
+    indikatoren:
+      de:
+        - "(inzwischen|langsam|allmählich) .{0,15}(besser|mehr|versteht)"
+        - "(bewegt|verändert|aufmerksamkeit)"
+      en:
+        - "(by now|slowly|gradually) .{0,15}(better|more|understand)"
+        - "(changing|shifting|improving|getting (better|worse))"
+        - "(used to .{0,15}(but|now)|things (are|have) changed)"
+
+  FREMDHEIT_DIFFERENZ:
+    beschreibung: "Topos der Fremdheit: Das Andere als Problem oder Ressource"
+    theorie: "Fremdheits-Topoi (Wodak); Differenzdiskurs"
+    indikatoren:
+      de:
+        - "(fremd|nicht von hier|woanders|ausländer)"
+        - "(kultur|anders|unbekannt|gewöhnen)"
+      en:
+        - "(foreign|stranger|different|not from (here|this))"
+        - "(culture|custom|way of (life|doing things))"
+        - "(get used to|adapt|don't know how)"
+        - "(back home|in my country|where I come from)"
+
+  NORMALITAET:
+    beschreibung: "Topos der Normalität: Abweichung vom 'Normalen' als Argument"
+    theorie: "Normalismus (Link); Foucault: Normalisierungsmacht"
+    indikatoren:
+      de:
+        - "(normal|selbstverständlich|üblich|wie alle anderen)"
+        - "(nicht normal|unnormal|ungewöhnlich)"
+      en:
+        - "(normal|ordinary|like everyone else|natural)"
+        - "(not normal|unusual|different from|unlike)"
+        - "(supposed to|expected to|should be)"
+
+
+# ============================================================
+# FRAME-SPANNUNGEN (theoretisch begründete Widersprüche)
+# ============================================================
+
+frame_spannungen:
+  - frame_a: "OEKONOMISIERUNG"
+    frame_b: "SOLIDARITAET_GEMEINSCHAFT"
+    beschreibung: "Marktlogik vs. Gemeinschaft: Effizienz unterminiert Zusammenhalt"
+  - frame_a: "OEKONOMISIERUNG"
+    frame_b: "LEGITIMITAET_GERECHTIGKEIT"
+    beschreibung: "Marktlogik vs. Gerechtigkeit: Ökonomische Zwänge kollidieren mit Fairnessansprüchen"
+  - frame_a: "AUTONOMIE_SELBSTBESTIMMUNG"
+    frame_b: "INSTITUTIONELLE_LOGIK"
+    beschreibung: "Selbstbestimmung vs. System: Individuelle Agency trifft auf institutionelle Struktur"
+  - frame_a: "AUTONOMIE_SELBSTBESTIMMUNG"
+    frame_b: "VULNERABILITAET"
+    beschreibung: "Handlungsfähigkeit vs. Verletzlichkeit: Empowerment trifft auf Prekarität"
+  - frame_a: "EXKLUSION_OTHERING"
+    frame_b: "SOLIDARITAET_GEMEINSCHAFT"
+    beschreibung: "Ausschluss vs. Gemeinschaft: Othering untergräbt Solidarität"
+  - frame_a: "EXKLUSION_OTHERING"
+    frame_b: "LEGITIMITAET_GERECHTIGKEIT"
+    beschreibung: "Exklusion vs. Gerechtigkeit: Ausgrenzung verletzt Gerechtigkeitsansprüche"
+  - frame_a: "NORMALISIERUNG"
+    frame_b: "VULNERABILITAET"
+    beschreibung: "Normalisierung vs. Prekarität: 'So ist es eben' invisibilisiert Verletzlichkeit"
+  - frame_a: "BUEROKRATISCHE_ORDNUNG"
+    frame_b: "AUTONOMIE_SELBSTBESTIMMUNG"
+    beschreibung: "Bürokratie vs. Autonomie: Verfahren schränken Handlungsspielräume ein"
+  - frame_a: "NORMALISIERUNG"
+    frame_b: "EXKLUSION_OTHERING"
+    beschreibung: "Normalisierung vs. Othering: Normalisierung kann Ausgrenzung verschleiern"
+
+
+# ============================================================
+# FRAME-PRIORITÄTEN UND CONFLICT-REGELN
+# ============================================================
+#
+# Problem: Breite Frames (z. B. OEKONOMISIERUNG) dominieren,
+#          weil ihre Keywords in vielen Kontexten vorkommen.
+#
+# Lösung:  Spezifische Frames bekommen höhere Priorität.
+#          Bei Conflict: Der spezifische Frame gewinnt.
+#
+# Wie es funktioniert:
+#   - Priorität: Höhere Zahl = wird bevorzugt bei Mehrdeutigkeit
+#   - Conflicts: Wenn Frame A und B im selben Satz feuern,
+#     wird der niedrigprioritäre heruntergewichtet (nicht gelöscht!)
+#   - "downweight_factor": Multiplikator für den schwächeren Frame
+#     (0.5 = halbes Gewicht, 0.0 = komplett unterdrückt)
+#
+# Im Audit Trail wird notiert:
+#   "OEKONOMISIERUNG (downweighted: 0.5, conflict with EXKLUSION_OTHERING)"
+#
+# ============================================================
+
+frame_priorities:
+  OEKONOMISIERUNG: 10
+  OEFFENTLICHER_DISKURS: 10
+  NORMALISIERUNG: 12
+  SOLIDARITAET_GEMEINSCHAFT: 15
+  INSTITUTIONELLE_LOGIK: 15
+  BUEROKRATISCHE_ORDNUNG: 18
+  AUTONOMIE_SELBSTBESTIMMUNG: 18
+  VULNERABILITAET: 20
+  EXKLUSION_OTHERING: 20
+  LEGITIMITAET_GERECHTIGKEIT: 20
+
+frame_conflicts:
+  # Wenn EXKLUSION erkannt wird, soll OEKONOMISIERUNG nicht dominieren
+  - if_present: "EXKLUSION_OTHERING"
+    downweight: "OEKONOMISIERUNG"
+    downweight_factor: 0.5
+    grund: "Ökonomische Marker im Exklusionskontext sind eher Exklusion als Marktlogik"
+
+  # Wenn BUEROKRATISCHE_ORDNUNG erkannt wird, soll INSTITUTIONELLE_LOGIK nicht verdoppeln
+  - if_present: "BUEROKRATISCHE_ORDNUNG"
+    downweight: "INSTITUTIONELLE_LOGIK"
+    downweight_factor: 0.5
+    grund: "Bürokratie ist spezifischer als allgemeine Systemlogik"
+
+  # Wenn LEGITIMITAET erkannt wird, soll NORMALISIERUNG nicht verschleiern
+  - if_present: "LEGITIMITAET_GERECHTIGKEIT"
+    downweight: "NORMALISIERUNG"
+    downweight_factor: 0.5
+    grund: "Gerechtigkeitsanspruch bricht Normalisierung auf"
+
+  # Wenn VULNERABILITAET erkannt wird, soll OEKONOMISIERUNG nicht dominieren
+  - if_present: "VULNERABILITAET"
+    downweight: "OEKONOMISIERUNG"
+    downweight_factor: 0.5
+    grund: "Prekaritätserfahrung ist spezifischer als Marktlogik"
+
+
+# ============================================================
+# MODUL D: AFFEKTIVE DIMENSION (Ahmed, Massumi)
+# ============================================================
+
+affekt_dimensionen:
+
+  INTENSIVIERUNG:
+    beschreibung: "Sprachliche Verstärkung – Hinweis auf emotionale Aufladung"
+    theorie: "Appraisal Theory: Force/Intensification"
+    indikatoren:
+      de:
+        - "(extrem|wirklich|total|absolut|echt|unglaublich|ehrlich gesagt)"
+        - "(zum ersten mal|nie zuvor|noch nie)"
+        - "(einfach nur|einfach gar)"
+      en:
+        - "(extremely|really|totally|absolutely|honestly|truly)"
+        - "(for the first time|never before|never)"
+        - "(just|simply|completely|entirely)"
+
+  KOERPERLICHER_VERWEIS:
+    beschreibung: "Affekt über Körperlichkeit ausgedrückt"
+    theorie: "Embodiment, Phänomenologie des Leibes"
+    indikatoren:
+      de:
+        - "(geweint|gezittert|geschwitzt|übelkeit|herz|magen|bauch)"
+        - "(kraft|erschöpf|müde|schlaflos|zusammengebrochen)"
+        - "(lächel|atmen|durchatmen)"
+      en:
+        - "(cried|trembled|sweating|nausea|heart|stomach)"
+        - "(exhausted|tired|sleepless|collapsed)"
+        - "(smile|breathe|catch my breath)"
+        - "(feel.{0,10}(sick|heavy|tight|pressure|weight))"
+        - "(couldn't sleep|kept me awake|restless)"
+        - "(stress|burn.?out|drained|worn out)"
+        - "(relief|weight off|finally breathe)"
+
+  AMBIVALENZ:
+    beschreibung: "Widersprüchliche Gefühle – affektive Spannung"
+    theorie: "Ahmed: Emotionale Ambivalenz als diskursives Phänomen"
+    indikatoren:
+      de:
+        - "(einerseits|andererseits)"
+        - "(aber|doch|trotzdem|dennoch|gleichzeitig)"
+        - "(wütend.{0,30}traurig|traurig.{0,30}wütend)"
+        - "(schon.{0,15}aber)"
+        - "(nicht immer|reicht nicht immer)"
+      en:
+        # Kontextfilter: Konjunktionen nur MIT Affekt-/Bewertungskontext
+        - "(on the one hand|on the other hand)"
+        - "(but|yet|still|however) .{0,30}(happy|sad|angry|frustrat|love|hate|enjoy|miss|difficult|hard|strange|weird|unfair|nice|great)"
+        - "(angry.{0,30}sad|sad.{0,30}angry|love.{0,30}hate|happy.{0,30}sad)"
+        - "(at the same time|mixed feelings|part of me)"
+        - "(I (like|love|enjoy) .{0,30}but)"
+        - "(it's (nice|great|good) .{0,15}but .{0,15}(hard|difficult|frustrat|sad))"
+
+  EXPLIZITE_EMOTION:
+    beschreibung: "Direkte Benennung von Gefühlen"
+    theorie: "Emotion als diskursive Ressource"
+    indikatoren:
+      de:
+        - "(das (macht|gibt) mir .{0,15}(wütend|traurig|kraft|hoffnung|angst))"
+        - "(ich (fühle|spüre|empfinde))"
+        - "(gefühl)"
+        - "(wütend|traurig|froh|glücklich|verzweifelt|hoffnungsvoll)"
+      en:
+        - "(that makes me .{0,15}(angry|sad|hopeful|afraid))"
+        - "(I (feel|sense|felt))"
+        - "(feeling)"
+        - "(angry|sad|happy|desperate|hopeful|grateful)"
+        - "(frustrat|disappoint|annoyed|upset|anxious|worried)"
+        - "(proud|relieved|comfortable|lucky)"
+        - "(lonely|isolated|homesick|lost|confused)"
+        - "(unfair|unjust|hurt|humiliat)"
+
+  DISTANZIERUNG:
+    beschreibung: "Affektvermeidung als Signal – etwas wird NICHT direkt gesagt"
+    theorie: "Sagbarkeitsgrenzen, Abwehrmechanismen"
+    indikatoren:
+      de:
+        - "(naja|na ja|wie soll ich sagen)"
+        - "(ehrlich gesagt|um ehrlich zu sein)"
+        - "(sag ich mal|wenn man so will)"
+      en:
+        - "(well|how should I put it|how can I say)"
+        - "(to be honest|honestly|frankly)"
+        - "(let's say|if you will|so to speak)"
+        - "(I (don't know|wouldn't say|can't really) .{0,10}(how|what|if))"

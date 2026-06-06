@@ -24,4 +24,4 @@ keywords:
 version: "2.0.0"
 date-released: "2026-06-06"
 license: "MIT"
-# doi: "REPLACE_WITH_ZENODO_CONCEPT_DOI"   # <-- add after the first Zenodo release (repo currently has GitHub releases but no Zenodo DOI yet)
+doi: "10.5281/zenodo.20572669"

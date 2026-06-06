@@ -3,7 +3,7 @@
 **A theory-driven, rule-based and auditable infrastructure for reconstructing how justice
 claims are *socially organized* in qualitative interview data — with an empirical reliability profile.**
 
-[![DOI](https://zenodo.org/badge/DOI/REPLACE_WITH_NEW_DOI.svg)](https://doi.org/REPLACE_WITH_NEW_DOI)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20572669.svg)](https://doi.org/10.5281/zenodo.20572669)
 
 ---
 

@@ -1,0 +1,169 @@
+# ============================================================
+# Justice Charter v1.1
+# ============================================================
+# Layer 0 (Paradigm) + Layer 1 (Charter) of the RJA v1.1 architecture.
+#
+# This file is the NORMATIVE SELF-DESCRIPTION of the analysis. It does
+# NOT claim a view from nowhere. It declares the standpoint from which
+# justice is read, the dimensions it admits, the relational vocabulary
+# it uses, what it is forbidden to do (aggregate across incommensurable
+# dimensions), and how it revises itself (residue -> charter review).
+#
+# Charter versions are to RJA what Implementation Profiles are to
+# IMM-Core: a versioned, citable specialization. Two studies are
+# directly comparable only WITHIN a charter version; across versions
+# they require a crosswalk (see `versioning`).
+# ============================================================
+
+charter_version: "1.1"
+status: "draft"           # draft | frozen | superseded
+supersedes: "framebook_v3.1 (scalar intensity model)"
+date: "2026-06-02"
+
+# ------------------------------------------------------------
+# LAYER 0 — RELATIONAL JUSTICE PARADIGM
+# The governing assumption. NOT a code, NOT a dimension.
+# It is the theory of codability: it states what must be true
+# for a justice claim to be legible at all.
+# ------------------------------------------------------------
+paradigm:
+  statement: >
+    Justice is relationally constituted. A justice claim does not exist
+    prior to the relation in which it is made: it emerges, is blocked,
+    legitimated, or displaced within an ordered relation between actors,
+    institutions, positions, dependencies, and orders of justification.
+  corollaries:
+    - "No justice claim without a position, a relation, an address, a dependency, a power asymmetry."
+    - "Justice dimensions describe WHAT is at stake; relational configuration describes HOW it is socially organized."
+    - "Relational Justice is the paradigm; the Relational Configuration Engine (Layer 3) is the operation."
+  consequence_for_method: >
+    The output of RJA is not a magnitude ('how unjust, 0-10') but a
+    located configuration. The model reconstructs situated conflict
+    configurations; it does not measure injustice on a scale.
+
+# ------------------------------------------------------------
+# LAYER 1 — CHARTER
+# ------------------------------------------------------------
+
+# --- 1a. Normative commitments (declared, not hidden) ---
+normative_commitments:
+  - id: "NC1"
+    commitment: "Recognition, redistribution and representation are distinct and incommensurable dimensions of justice."
+    source: "Fraser (2003)"
+  - id: "NC2"
+    commitment: "Standpoint is unavoidable; the task is to make it auditable, not to eliminate it."
+    source: "Haraway (1988), situated knowledges"
+  - id: "NC3"
+    commitment: "Every normative ordering must be justifiable to those subject to it; the charter itself is therefore open to contestation."
+    source: "Forst (2007), right to justification"
+  - id: "NC4"
+    commitment: "Intersectional positions can be qualitatively emergent, not the additive sum of single axes."
+    source: "Crenshaw (1989), Hill Collins"
+  - id: "NC5"
+    commitment: "Non-articulation (silence, hesitation, vagueness) can be a justice-relevant finding, not noise."
+    source: "Fricker (2007), hermeneutical injustice; Medina (2013)"
+
+# --- 1b. Theoretical provenance & privileged register (the blind spots) ---
+provenance:
+  register_privileged: "Western-European, institution-critical justice grammar (recognition / redistribution / procedure)."
+  registers_NOT_natively_encoded:
+    - "religious dignity"
+    - "collective honour / shame orders"
+    - "ancestral / kin obligation and reciprocity-debt"
+    - "communitarian and postcolonial justice registers (de Sousa Santos, Mbembe)"
+  blind_spots:
+    - "Affect is read as expressed density, not as Ahmed's circulating, sedimented affect archive."
+    - "Attachment to harmful relations (Berlant, cruel optimism) is only partially captured via `speaker_stance`."
+  instruction: >
+    When an utterance speaks from a register listed above, the coder MUST
+    NOT force it into an available dimension or relation type. It is logged
+    as residue (see residue.types) and may trigger a charter revision.
+
+# --- 1c. Admitted justice dimensions (Layer 2 vocabulary) ---
+# Each dimension is coded as {type, salience, valence, confidence}.
+# Dimensions are NOT on a common scale and MUST NOT be summed (see aggregation_rules).
+dimensions:
+  - id: recognition      ; gloss: "being seen/respected as a full member or subject"        ; source: "Honneth, Fraser"
+  - id: redistribution   ; gloss: "material/economic share, resources, security"            ; source: "Fraser"
+  - id: representation    ; gloss: "political voice in deciding the frame/rules"             ; source: "Fraser (the political)"
+  - id: dignity          ; gloss: "inviolability of the person; non-humiliation"            ; source: "Honneth; human-dignity discourse"
+  - id: voice            ; gloss: "concrete ability to speak and be heard in this relation"  ; source: "Hirschman; Sen/Nussbaum (capability)"
+  - id: access           ; gloss: "ability to reach a good, service, status, or procedure"  ; source: "Sen/Nussbaum"
+  - id: vulnerability    ; gloss: "exposure to harm / dependency as a condition"            ; source: "Butler; care ethics"
+  - id: justification    ; gloss: "who owes reasons to whom; asymmetry of the duty to justify" ; source: "Forst; Boltanski & Thevenot"
+note_on_dimension_set: >
+  This LIST IS ITSELF a normative act (recursive charter principle, NC2/NC3).
+  The dimensions sit on different ontological planes (analytic axes vs.
+  conditions vs. capabilities vs. meta-procedural). They are kept distinct
+  ON PURPOSE and never aggregated.
+
+# --- 1d. Salience / valence / confidence coding values ---
+coding_values:
+  salience: [absent, low, medium, high]    # how central the dimension is in this turn
+  valence:                                  # DIRECTION — solves the v3.1 "praise looks like despair" defect
+    - affirmed        # the dimension is granted/realized (positive)
+    - at_stake        # invoked as a claim/aspiration, outcome open
+    - denied          # the dimension is violated/withheld (negative)
+    - ambivalent      # both, or oscillating
+  confidence: [low, medium, high]           # PER-FIELD coder confidence (distinct from audit.overall_uncertainty)
+
+# --- 1e. Relational vocabulary rules (governs Layer 3) ---
+# The relational vocabulary is where the heaviest normative work happens
+# (who is victim, who is power). It is therefore charter-governed and
+# carries its own residue channel.
+relational_vocabulary:
+  governance: "closed-with-residue"   # closed list of types; misfits go to relation_residue and may grow the list (versioning)
+  positioning_levels:                 # MUST be kept distinct (Bamberg)
+    - self_positioning      # how the speaker positions themselves
+    - other_positioning     # how the speaker positions the other/institution (the NARRATED relation)
+    - analyst_positioning   # the analyst's own reconstruction, explicitly marked as such
+  relation_types: [dependency, gatekeeping, peer, custodial, contractual, kinship_obligation, unspecified]
+  asymmetry:
+    types: [justification_asymmetry, recognition_asymmetry, voice_asymmetry, resource_asymmetry, definitional_power, none]
+    beneficiary: "free text: in whose favour the asymmetry runs, as narrated"
+    speaker_stance: [contesting, enduring, legitimating, desiring, ambivalent]
+      # 'legitimating' / 'desiring' are the Foucault-Butler / Berlant markers:
+      # the points where structural asymmetry is rendered invisible or attached-to.
+      # NOTE: v3.1 DAMPENED such turns (NORMALISIERUNG x0.9). v1.1 MARKS them.
+
+# --- 1f. Aggregation rules (the core prohibition) ---
+aggregation_rules:
+  forbidden:
+    - "Summation or averaging ACROSS dimensions into a single justice score."
+    - "Multiplying frame counts as a proxy for tension intensity (the v3.1 sqrt(A*S) model)."
+  permitted:
+    - "Per-dimension salience/valence (kept disaggregated)."
+    - "Within-dimension counts and frequencies across a corpus."
+    - "Pattern/configuration frequencies (which configurations recur)."
+  rationale: "The defect of v3.1 was not measurement but aggregation across incommensurable dimensions (Fraser/NC1)."
+  navigation_aid: >
+    For sorting/triage ONLY, a derived field `residue_load` (share of high-residue
+    turns) or per-dimension maxima may be used. These are explicitly labelled
+    navigation aids, never 'the justice level'.
+
+# --- 1g. Residue policy ---
+residue_policy:
+  principle: "Residue is a finding, not an error. But not all gaps are deep: residue MUST be typed."
+  types: [disfluency, register_mismatch, hermeneutical_gap, strategic_reticence, affective_overload, relation_type_misfit]
+  guard: >
+    'hermeneutical_gap' (Fricker) requires evidence of a COLLECTIVE interpretive
+    resource deficit, not mere individual inarticulacy. Do not romanticize every
+    silence; disfluency and fatigue are also valid residue types.
+  feedback_loop: "residue -> repeated pattern -> charter review -> new type -> next charter version"
+
+# --- 1h. Versioning & comparability ---
+versioning:
+  within_version_comparability: "direct"
+  cross_version_comparability: "via crosswalk only (isomorphic to IMM-Core implementation-profile crosswalks)"
+  revision_trigger: "A residue pattern recurring above a declared threshold across the corpus opens a charter review issue."
+  changelog: "see RELEASE_NOTES_v1.1.md"
+
+# --- 1i. Abductive loop (Layer 4 control) ---
+abductive_loop:
+  principle: "Dimension and relation are co-constitutive; coding is NOT a one-way pipeline."
+  rule: "Layer 2 (dimensions) and Layer 3 (relations) may revise each other until a fixed point is reached."
+  termination: "Stop when one full pass produces no field change, OR after max 3 passes (then log as unstable in audit)."
+  audit_requirement: >
+    If coding is automated (rules/LLM), the revision history MUST be logged,
+    not only the final state. A self-revising coder that hides its revisions
+    is a black box claiming transparency.

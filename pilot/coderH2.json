@@ -1,0 +1,538 @@
+[
+ {
+  "turn_id": 1,
+  "_text_DO_NOT_EDIT": "M: Ja, ich erinnere mich an einen Termin im Jobcenter. Das war vielleicht 2018. Ich hatte damals schon B1 gemacht und wollte eine Weiterbildung beginnen. Ich hatte vorher in meinem Herkunftsland als Buchhalterin gearbeitet, aber meine Abschlüsse wurden nicht direkt anerkannt. Die Sachbearbeiterin sagte zu mir: „Wir müssen erst schauen, ob das realistisch ist.“ Das klingt harmlos. Vielleicht war es auch gar nicht böse gemeint. Aber in dem Moment war ich wieder klein. Ich war nicht eine Frau mit Berufserfahrung. Ich war eine Akte. Eine Nummer. Eine Möglichkeit, die vielleicht zu teuer ist.",
+  "_interviewer_context": "I: Können Sie beschreiben, wann Sie das zum ersten Mal so gespürt haben?",
+  "charter_version": "1.3",
+  "justice_dimensions": [
+   {
+    "type": "recognition",
+    "salience": "high",
+    "valence": "denied",
+    "confidence": "medium"
+   },
+   {
+    "type": "dignity",
+    "salience": "high",
+    "valence": "denied",
+    "confidence": "high"
+   }
+  ],
+  "vulnerability": {
+   "exposure": "chronic",
+   "source": [
+    "institutional",
+    "legal"
+   ],
+   "salience": "high",
+   "confidence": "high"
+  },
+  "relational_configuration": {
+   "self_positioning": "reduziert auf administrative kategorie",
+   "other_positioning": "sachbearbeiterin als gatekeeper mit definierender macht",
+   "analyst_positioning": "entmenschlichung durch bürokratische logik - berufserfahrung wird unsichtbar",
+   "relation_type": "gatekeeping",
+   "asymmetry_type": "recognition_asymmetry",
+   "beneficiary": "institution",
+   "stance_primary": "accommodating",
+   "stance_flags": [
+    "enduring",
+    "resigned"
+   ],
+   "relation_residue": null
+  },
+  "residue": [
+   {
+    "type": "hermeneutical_gap",
+    "explanation": "die transformation von person zu akte/nummer als mechanismus der entwürdigung fehlt im schema",
+    "charter_revision_candidate": false
+   }
+  ],
+  "audit": {
+   "evidence_quote": "Ich war nicht eine Frau mit Berufserfahrung. Ich war eine Akte. Eine Nummer.",
+   "rationale": "recognition und dignity sind hier beide zentral - die abwertung als akte ist eine form der nicht-anerkennung. gatekeeping weil es um zugang zu weiterbildung geht",
+   "overall_uncertainty": "low",
+   "coder_id": "H1"
+  }
+ },
+ {
+  "turn_id": 2,
+  "_text_DO_NOT_EDIT": "M: Es bedeutete: Sie entscheidet, was ich mir zutrauen darf. Und ich musste erklären, warum ich überhaupt eine Zukunft haben möchte. Ich musste sagen: Ich bin fleißig, ich will arbeiten, ich werde nicht aufgeben. Aber warum muss ich das sagen? Andere Menschen dürfen einfach Pläne haben. Bei mir wurde jeder Plan wie ein Risiko behandelt.",
+  "_interviewer_context": "I: Was genau hat dieses „realistisch“ für Sie bedeutet?",
+  "charter_version": "1.3",
+  "justice_dimensions": [
+   {
+    "type": "justification",
+    "salience": "high",
+    "valence": "denied",
+    "confidence": "high"
+   },
+   {
+    "type": "access",
+    "salience": "medium",
+    "valence": "at_stake",
+    "confidence": "medium"
+   }
+  ],
+  "vulnerability": {
+   "exposure": "chronic",
+   "source": [
+    "institutional"
+   ],
+   "salience": "high",
+   "confidence": "high"
+  },
+  "relational_configuration": {
+   "self_positioning": "bittstellerin um erlaubnis zu existieren",
+   "other_positioning": "behörde als hüter der realitätsdefinition",
+   "analyst_positioning": "pläne werden als risiko behandelt statt als recht - das ist eine form der strukturellen diskriminierung",
+   "relation_type": "gatekeeping",
+   "asymmetry_type": "justification_asymmetry",
+   "beneficiary": "jobcenter",
+   "stance_primary": "contesting",
+   "stance_flags": [
+    "enduring"
+   ],
+   "relation_residue": null
+  },
+  "residue": [
+   {
+    "type": "hermeneutical_gap",
+    "explanation": "die frage 'warum muss ich das sagen' zeigt eine strukturelle ungerechtigkeit die das schema nicht ganz fängt",
+    "charter_revision_candidate": false
+   }
+  ],
+  "audit": {
+   "evidence_quote": "Bei mir wurde jeder Plan wie ein Risiko behandelt.",
+   "rationale": "justification ist primär weil M. sich für grundlegende wünsche rechtfertigen muss. access sekundär weil es um zugang zu zukunftsmöglichkeiten geht",
+   "overall_uncertainty": "medium",
+   "coder_id": "H1"
+  }
+ },
+ {
+  "turn_id": 3,
+  "_text_DO_NOT_EDIT": "M: Genau. Ich musste mich immer rechtfertigen. Nicht nur für Fehler, sondern schon für Wünsche. Wenn ich gesagt habe, ich möchte eine Ausbildung machen, kam: „Sind Sie sicher, dass Sie das schaffen?“ Wenn ich gesagt habe, ich möchte arbeiten, kam: „Aber Ihre Kinder?“ Wenn ich gesagt habe, ich möchte studieren, kam: „Vielleicht lieber erst etwas Praktisches.“ Es war nie direkt ein Nein. Es war eher ein weiches Nein. Ein Nein, das freundlich klingt.",
+  "_interviewer_context": "I: Also war es eine Form von Rechtfertigung?",
+  "charter_version": "1.3",
+  "justice_dimensions": [
+   {
+    "type": "voice",
+    "salience": "high",
+    "valence": "denied",
+    "confidence": "high"
+   },
+   {
+    "type": "recognition",
+    "salience": "high",
+    "valence": "denied",
+    "confidence": "high"
+   }
+  ],
+  "vulnerability": {
+   "exposure": "chronic",
+   "source": [
+    "institutional",
+    "affective"
+   ],
+   "salience": "high",
+   "confidence": "high"
+  },
+  "relational_configuration": {
+   "self_positioning": "person deren wünsche systematisch infrage gestellt werden",
+   "other_positioning": "institution als bewertende instanz",
+   "analyst_positioning": "das weiche nein ist eine form der indirekten zugangsverweigerung mit psychologischer wirkung",
+   "relation_type": "anticipatory_gatekeeping",
+   "asymmetry_type": "voice_asymmetry",
+   "beneficiary": "institution",
+   "stance_primary": "accommodating",
+   "stance_flags": [
+    "strategic",
+    "enduring"
+   ],
+   "relation_residue": null
+  },
+  "residue": [
+   {
+    "type": "strategic_reticence",
+    "explanation": "die selbstzensur bei der formulierung von wünschen wird nicht vollständig erfasst",
+    "charter_revision_candidate": false
+   }
+  ],
+  "audit": {
+   "evidence_quote": "Es war eher ein weiches Nein. Ein Nein, das freundlich klingt.",
+   "rationale": "voice ist hier zentral weil M. ihre wünsche nicht frei äußern kann. recognition weil ihre kompetenz nicht anerkannt wird. anticipatory gatekeeping weil es um die erwartung von sanktionen geht",
+   "overall_uncertainty": "medium",
+   "coder_id": "H1"
+  }
+ },
+ {
+  "turn_id": 4,
+  "_text_DO_NOT_EDIT": "M: Am Anfang habe ich versucht, sehr ruhig zu sein. Ich wollte nicht aggressiv wirken. Man lernt schnell, dass Ärger gefährlich ist. Wenn man laut wird, dann heißt es: schwierig. Wenn man weint, heißt es: instabil. Wenn man schweigt, heißt es: versteht nicht. Also versucht man, genau die richtige Temperatur zu haben. Nicht zu kalt, nicht zu heiß. Dankbar, aber nicht passiv. Selbstbewusst, aber nicht fordernd. Das ist sehr anstrengend.",
+  "_interviewer_context": "I: Wie haben Sie darauf reagiert?",
+  "charter_version": "1.3",
+  "justice_dimensions": [
+   {
+    "type": "dignity",
+    "salience": "high",
+    "valence": "denied",
+    "confidence": "high"
+   },
+   {
+    "type": "voice",
+    "salience": "high",
+    "valence": "denied",
+    "confidence": "high"
+   }
+  ],
+  "vulnerability": {
+   "exposure": "chronic",
+   "source": [
+    "institutional",
+    "affective"
+   ],
+   "salience": "high",
+   "confidence": "high"
+  },
+  "relational_configuration": {
+   "self_positioning": "person in einem emotionalen gefängnis",
+   "other_positioning": "behörde als moralische instanz",
+   "analyst_positioning": "jede emotionale äußerung wird pathologisiert - eine form der entmündigung",
+   "relation_type": "dependency",
+   "asymmetry_type": "voice_asymmetry",
+   "beneficiary": "institution",
+   "stance_primary": "accommodating",
+   "stance_flags": [
+    "enduring",
+    "resigned"
+   ],
+   "relation_residue": null
+  },
+  "residue": [
+   {
+    "type": "affective_overload",
+    "explanation": "die totale unterdrückung von voice und die damit verbundene psychische last wird nicht vollständig erfasst",
+    "charter_revision_candidate": true
+   }
+  ],
+  "audit": {
+   "evidence_quote": "Wenn man laut wird, dann heißt es: schwierig. Wenn man weint, heißt es: instabil.",
+   "rationale": "dignity und voice sind hier beide primär weil jede emotionale äußerung abgewertet wird. dependency weil es um eine dauerhafte struktur geht",
+   "overall_uncertainty": "low",
+   "coder_id": "H1"
+  }
+ },
+ {
+  "turn_id": 5,
+  "_text_DO_NOT_EDIT": "M: Ja. Ich habe manchmal vor Terminen geübt, wie ich spreche. Nicht nur Deutsch, sondern Ton. Ich habe mir gesagt: Lächeln, aber nicht zu viel. Nicht zu schnell reden. Nicht unterbrechen. Alle Unterlagen in einer Mappe. Wenn sie etwas Falsches sagen, korrigiere sie vorsichtig. Und danach war ich völlig erschöpft. Nicht wegen des Inhalts, sondern wegen dieser Rolle.",
+  "_interviewer_context": "I: Dieses Austarieren klingt nach einer dauerhaften Selbstkontrolle.",
+  "charter_version": "1.3",
+  "justice_dimensions": [
+   {
+    "type": "access",
+    "salience": "medium",
+    "valence": "at_stake",
+    "confidence": "medium"
+   },
+   {
+    "type": "dignity",
+    "salience": "high",
+    "valence": "denied",
+    "confidence": "high"
+   }
+  ],
+  "vulnerability": {
+   "exposure": "chronic",
+   "source": [
+    "institutional",
+    "affective"
+   ],
+   "salience": "high",
+   "confidence": "high"
+  },
+  "relational_configuration": {
+   "self_positioning": "schauspielerin in einem stück das sie nicht geschrieben hat",
+   "other_positioning": "beamtin als regisseurin der interaktion",
+   "analyst_positioning": "die performance der rolle entfremdet von der eigenen person - eine form der strukturellen gewalt",
+   "relation_type": "anticipatory_gatekeeping",
+   "asymmetry_type": "resource_asymmetry",
+   "beneficiary": "institution",
+   "stance_primary": "accommodating",
+   "stance_flags": [
+    "strategic",
+    "enduring"
+   ],
+   "relation_residue": null
+  },
+  "residue": [],
+  "audit": {
+   "evidence_quote": "Und danach war ich völlig erschöpft. Nicht wegen des Inhalts, sondern wegen dieser Rolle.",
+   "rationale": "access ist hier relevant weil es um den zugang zu ressourcen geht der von der performance abhängt. dignity weil die rolle entwürdigend ist",
+   "overall_uncertainty": "medium",
+   "coder_id": "H1"
+  }
+ },
+ {
+  "turn_id": 6,
+  "_text_DO_NOT_EDIT": "M: Die Rolle der guten Migrantin. Oder der guten Antragstellerin. Ich weiß nicht. Jemand, der Hilfe bekommt, aber nicht zu viel will. Jemand, der dankbar ist, aber nicht sichtbar leidet. Jemand, der integriert ist, aber seine Geschichte nicht zu kompliziert macht.",
+  "_interviewer_context": "I: Welche Rolle war das?",
+  "charter_version": "1.3",
+  "justice_dimensions": [
+   {
+    "type": "representation",
+    "salience": "high",
+    "valence": "denied",
+    "confidence": "high"
+   }
+  ],
+  "vulnerability": {
+   "exposure": "chronic",
+   "source": [
+    "institutional",
+    "affective"
+   ],
+   "salience": "high",
+   "confidence": "high"
+  },
+  "relational_configuration": {
+   "self_positioning": "die ideale klientin nach institutionellen vorstellungen",
+   "other_positioning": "system als definierer der normen",
+   "analyst_positioning": "die rolle ist ein konstrukt das m. annehmen muss um zu funktionieren",
+   "relation_type": "dependency",
+   "asymmetry_type": "definitional_power",
+   "beneficiary": "institutionen",
+   "stance_primary": "accommodating",
+   "stance_flags": [
+    "resigned"
+   ],
+   "relation_residue": null
+  },
+  "residue": [
+   {
+    "type": "hermeneutical_gap",
+    "explanation": "die rolle als mechanismus der unterdrückung wird nicht ganz erfasst",
+    "charter_revision_candidate": false
+   }
+  ],
+  "audit": {
+   "evidence_quote": "Die Rolle der guten Migrantin. Oder der guten Antragstellerin.",
+   "rationale": "representation ist hier der kern - m. muss sich einer rolle unterwerfen die nicht ihre eigene ist. dependency weil es um dauerhafte strukturen geht",
+   "overall_uncertainty": "low",
+   "coder_id": "H1"
+  }
+ },
+ {
+  "turn_id": 7,
+  "_text_DO_NOT_EDIT": "M: Wenn man seine Geschichte erzählt, muss sie in die Form passen, die erwartet wird. Bei Asyl war es eine andere Form: Gefahr, Flucht, Angst. Bei Arbeit war es: Motivation, Anpassung, Zuverlässigkeit. Bei der Schule meiner Kinder war es: engagierte Mutter, aber nicht einmischen. Jedes System will eine andere Version von mir. Und manchmal widersprechen sich diese Versionen.",
+  "_interviewer_context": "I: Sie sagen „nicht zu kompliziert“. Können Sie das erklären?",
+  "charter_version": "1.3",
+  "justice_dimensions": [
+   {
+    "type": "voice",
+    "salience": "high",
+    "valence": "denied",
+    "confidence": "high"
+   },
+   {
+    "type": "recognition",
+    "salience": "medium",
+    "valence": "denied",
+    "confidence": "medium"
+   }
+  ],
+  "vulnerability": {
+   "exposure": "chronic",
+   "source": [
+    "institutional"
+   ],
+   "salience": "high",
+   "confidence": "high"
+  },
+  "relational_configuration": {
+   "self_positioning": "chamäleon der systeme",
+   "other_positioning": "institutionen als architekten der realität",
+   "analyst_positioning": "m. muss ihre geschichte so erzählen dass sie in die erwartungen passt - eine form der gewalt",
+   "relation_type": "multi_institutional_configuration",
+   "asymmetry_type": "definitional_power",
+   "beneficiary": "institutionen",
+   "stance_primary": "accommodating",
+   "stance_flags": [
+    "enduring",
+    "resigned"
+   ],
+   "relation_residue": null
+  },
+  "residue": [
+   {
+    "type": "hermeneutical_gap",
+    "explanation": "die strukturelle gewalt der identitätsanpassung fehlt als eigene kategorie",
+    "charter_revision_candidate": true
+   }
+  ],
+  "audit": {
+   "evidence_quote": "Jedes System will eine andere Version von mir. Und manchmal widersprechen sich diese Versionen.",
+   "rationale": "voice ist primär weil m. ihre stimme anpassen muss. recognition sekundär weil ihre identität fragmentiert wird. multi_institutional passt wegen der widersprüchlichen anforderungen",
+   "overall_uncertainty": "low",
+   "coder_id": "H1"
+  }
+ },
+ {
+  "turn_id": 8,
+  "_text_DO_NOT_EDIT": "M: Ja. In der Ausländerbehörde musste ich zeigen, dass ich abhängig genug bin, um Schutz zu brauchen, aber beim Jobcenter musste ich zeigen, dass ich unabhängig genug bin, um gefördert zu werden. In der Schule sollte ich nicht zu ängstlich wirken, aber auch nicht zu dominant. Beim Arzt sollte ich meine Beschwerden erklären, aber nicht so, dass es psychisch klingt, sonst wird alles darauf geschoben. Man muss ständig übersetzen, aber nicht nur Sprache. Man übersetzt sich selbst.",
+  "_interviewer_context": "I: Haben Sie ein Beispiel?",
+  "charter_version": "1.3",
+  "justice_dimensions": [
+   {
+    "type": "dignity",
+    "salience": "high",
+    "valence": "denied",
+    "confidence": "high"
+   },
+   {
+    "type": "representation",
+    "salience": "high",
+    "valence": "denied",
+    "confidence": "high"
+   }
+  ],
+  "vulnerability": {
+   "exposure": "chronic",
+   "source": [
+    "institutional",
+    "affective"
+   ],
+   "salience": "high",
+   "confidence": "high"
+  },
+  "relational_configuration": {
+   "self_positioning": "person die sich selbst verrät um zu überleben",
+   "other_positioning": "institutionen als widerprüchliche autoritäten",
+   "analyst_positioning": "die widersprüchlichen anforderungen zwingen m. zur identitätsaufgabe",
+   "relation_type": "multi_institutional_configuration",
+   "asymmetry_type": "recognition_asymmetry",
+   "beneficiary": "institutionen",
+   "stance_primary": "accommodating",
+   "stance_flags": [
+    "enduring",
+    "resigned"
+   ],
+   "relation_residue": null
+  },
+  "residue": [
+   {
+    "type": "hermeneutical_gap",
+    "explanation": "die metapher 'man übersetzt sich selbst' zeigt eine dimension die das schema nicht abdeckt",
+    "charter_revision_candidate": true
+   }
+  ],
+  "audit": {
+   "evidence_quote": "Man muss ständig übersetzen, aber nicht nur Sprache. Man übersetzt sich selbst.",
+   "rationale": "dignity und representation sind hier beide zentral. multi_institutional_configuration passt weil verschiedene systeme widersprüchliche versionen verlangen",
+   "overall_uncertainty": "low",
+   "coder_id": "H1"
+  }
+ },
+ {
+  "turn_id": 9,
+  "_text_DO_NOT_EDIT": "M: Ja, aber irgendwann fragt man sich: Wer bin ich, wenn ich immer nur die Version bin, die gerade funktioniert?",
+  "_interviewer_context": "I: Das ist ein sehr wichtiger Satz: Man übersetzt sich selbst.",
+  "charter_version": "1.3",
+  "justice_dimensions": [
+   {
+    "type": "recognition",
+    "salience": "high",
+    "valence": "ambivalent",
+    "confidence": "high"
+   },
+   {
+    "type": "voice",
+    "salience": "medium",
+    "valence": "at_stake",
+    "confidence": "medium"
+   }
+  ],
+  "vulnerability": {
+   "exposure": "chronic",
+   "source": [
+    "affective",
+    "institutional"
+   ],
+   "salience": "high",
+   "confidence": "high"
+  },
+  "relational_configuration": {
+   "self_positioning": "existenzielle suche nach dem echten selbst",
+   "other_positioning": "systeme als definierer der identität",
+   "analyst_positioning": "die frage nach der eigenen identität jenseits der funktionellen rollen",
+   "relation_type": "unspecified",
+   "asymmetry_type": "recognition_asymmetry",
+   "beneficiary": "institutionen",
+   "stance_primary": "ambivalent",
+   "stance_flags": [
+    "resigned"
+   ],
+   "relation_residue": null
+  },
+  "residue": [
+   {
+    "type": "hermeneutical_gap",
+    "explanation": "die existenzielle dimension der identitätskrise wird nicht abgedeckt",
+    "charter_revision_candidate": true
+   }
+  ],
+  "audit": {
+   "evidence_quote": "Wer bin ich, wenn ich immer nur die Version bin, die gerade funktioniert?",
+   "rationale": "recognition ist primär weil es um die frage nach der eigenen identität geht. voice sekundär weil die stimme nur in bestimmten rollen erlaubt ist. unspecified weil es keine direkte relation gibt",
+   "overall_uncertainty": "high",
+   "coder_id": "H1"
+  }
+ },
+ {
+  "turn_id": 10,
+  "_text_DO_NOT_EDIT": "M: Ja. Ich will nicht sagen, dass alle schlecht waren. Es gab eine Beraterin in einem Verein. Sie hat mich gefragt: „Was möchten Sie eigentlich?“ Nicht: Was können Sie realistisch schaffen? Nicht: Was erlaubt Ihr Aufenthaltstitel? Sondern: Was möchten Sie? Ich war so überrascht, dass ich fast geweint habe. Weil diese Frage bedeutet: Du hast ein eigenes Zentrum. Du bist nicht nur Reaktion auf Regeln.",
+  "_interviewer_context": "I: Gab es Situationen, in denen Sie sich anerkannt gefühlt haben?",
+  "charter_version": "1.3",
+  "justice_dimensions": [
+   {
+    "type": "recognition",
+    "salience": "high",
+    "valence": "affirmed",
+    "confidence": "high"
+   },
+   {
+    "type": "dignity",
+    "salience": "high",
+    "valence": "affirmed",
+    "confidence": "high"
+   }
+  ],
+  "vulnerability": {
+   "exposure": "acute",
+   "source": [
+    "institutional",
+    "affective"
+   ],
+   "salience": "high",
+   "confidence": "medium"
+  },
+  "relational_configuration": {
+   "self_positioning": "mensch mit eigenem willen",
+   "other_positioning": "beraterin als ermöglichende instanz",
+   "analyst_positioning": "seltene moment der anerkennun als gleichberechtigte person mit agentität",
+   "relation_type": "supportive_recognition",
+   "asymmetry_type": "none",
+   "beneficiary": "M.",
+   "stance_primary": "affirming",
+   "stance_flags": [
+    "desiring"
+   ],
+   "relation_residue": null
+  },
+  "residue": [],
+  "audit": {
+   "evidence_quote": "Du hast ein eigenes Zentrum. Du bist nicht nur Reaktion auf Regeln.",
+   "rationale": "recognition und dignity sind hier beide affirmed - die frage der beraterin erkennt m. als person mit eigenem willen an. supportive_recognition ist hier klar",
+   "overall_uncertainty": "low",
+   "coder_id": "H1"
+  }
+ }
+]

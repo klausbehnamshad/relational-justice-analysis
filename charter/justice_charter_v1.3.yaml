@@ -1,0 +1,76 @@
+# ============================================================
+# Justice Charter v1.3  (current canonical charter for RJA v2.0)
+# ============================================================
+# Supersedes charter v1.1 (kept in this folder for provenance). This file states the
+# CURRENT normative grammar; unchanged philosophy (paradigm, provenance/blind-spots,
+# aggregation bans, abductive loop) is inherited from v1.1 and only summarized here.
+# ============================================================
+
+charter_version: "1.3"
+status: "draft"
+supersedes: "justice_charter_v1.1.yaml"
+date: "2026-06-06"
+
+# --- Layer 0: paradigm (unchanged from v1.1) ---
+paradigm:
+  statement: >
+    Justice is relationally constituted. Justice dimensions describe WHAT is at stake;
+    relational configuration describes HOW it is socially organized. Relational Justice is
+    the paradigm; the Relational Configuration Engine is the operation.
+  no_aggregate_score: true   # cross-dimension summation is forbidden (Fraser/incommensurability)
+
+# --- Inherited from v1.1 (unchanged) ---
+inherited_from_v1_1:
+  - normative_commitments (Fraser, Haraway, Forst, Crenshaw, Fricker)
+  - provenance + privileged_register + blind_spots (Western-European institution-critical grammar)
+  - aggregation_rules (no summation across dimensions; per-axis quantification permitted)
+  - residue_policy (typed; corpus-level repetition gate before any charter revision)
+  - abductive_loop (dimensions <-> relations co-revise; revisions logged)
+  - versioning (within-version comparable; cross-version via crosswalk; IMM-Core isomorphism)
+
+# --- Layer 2: justice dimensions (7; vulnerability removed -> own object) ---
+dimensions: [recognition, redistribution, representation, dignity, voice, access, justification]
+dimension_fields: {salience: [medium, high], valence: [affirmed, at_stake, denied, ambivalent], confidence: [low, medium, high]}
+dimension_listing_rule: >
+  List a dimension only if salience >= medium. 'Primary' is DERIVED = salience 'high'
+  (rule-based, not a separate ranking judgment). [v1.3 fix: replaced the v1.2 max-2 ranking,
+  which was inter-coder unreliable.]
+voice_rule: >
+  Code 'voice' only when the issue is speaking AND being heard, or the risk/consequence of speaking.
+  Mere silencing/dismissal -> dignity or recognition. [v1.3 tightening.]
+
+# --- Vulnerability: exposure/position object, NO valence (v1.2 fix) ---
+vulnerability:
+  exposure: [acute, chronic, latent]
+  source: [legal, economic, affective, institutional, familial, health, mixed]
+  fields: [salience, confidence]
+  rationale: "v1.1 coded vulnerability valence 100% oppositely; valence is incoherent for a position."
+
+# --- Layer 3: relational vocabulary ---
+relational_vocabulary:
+  positioning_levels: [self_positioning, other_positioning, analyst_positioning]   # Bamberg, kept separate
+  relation_types: [supportive_recognition, multi_institutional_configuration, gatekeeping, anticipatory_gatekeeping, dependency, unspecified]
+  relation_decision_rule: "pick the FIRST that applies, top to bottom (see docs/quick_reference_v1.3.md + calibration_examples_v1.3.md)"
+  relation_boundary_cues:
+    - "recurring soft refusals to stated requests = gatekeeping (decisions reported), not anticipatory."
+    - "anticipatory_gatekeeping = self-regulation, no reported decision (rehearsal/affect-management cues)."
+    - "multi_institutional_configuration needs 2+ explicitly named contradictory institutions in the turn."
+  asymmetry_type: [justification_asymmetry, definitional_power, voice_asymmetry, recognition_asymmetry, resource_asymmetry, none]
+  asymmetry_tiebreak: "if several fit, take the first in the order above. [v1.3 addition.]"
+  stance_primary: [contesting, accommodating, affirming, ambivalent]
+  stance_flags: [enduring, legitimating, desiring, resigned, strategic]
+  stance_rule: "describing an injury without challenging it = accommodating; contesting only if an actual move against the asymmetry."
+
+# --- Empirically known reliability (inter-human, 10 turns; see pilot/INTER_HUMAN_GATE_v1.3.md) ---
+reliability_profile:
+  reliable: ["stance_primary (kappa 0.80)", "vulnerability presence/exposure (kappa 1.0)", "dimension valence/direction (kappa 1.0)"]
+  moderate: ["relation_type (kappa 0.52) — clear types agree; mid-band splits coders"]
+  interpretive: ["asymmetry_type (kappa 0.38)", "dimension selection (which dims) ~0"]
+  note: "Inter-LLM relation_type kappa was 0.87 — overstated human reliability by ~0.35."
+
+# --- v1.4 targets (evidence-based) ---
+roadmap_v1_4:
+  - "ordered decision rule + worked examples for the gatekeeping/anticipatory/dependency mid-band"
+  - "asymmetry_type: tie-break examples OR collapse to ~3 classes (kappa 0.38 = too fine)"
+  - "code a single 'central dimension' to stabilize the selection step"
+  - "validate on real multilingual data (DE/FR/LB)"

@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+title: "Relational Justice Analysis (RJA)"
+message: "If you use this software, please cite it using these metadata."
+type: software
+authors:
+  - family-names: "Behnam Shad"
+    given-names: "Klaus"
+    affiliation: "University of Luxembourg, Luxembourg Centre for Contemporary and Digital History (C²DH)"
+    orcid: "https://orcid.org/0000-0002-3601-9024"
+repository-code: "https://github.com/klausbehnamshad/relational-justice-analysis"
+abstract: >-
+  RJA is a theory-driven, rule-based and auditable infrastructure for reconstructing how justice
+  claims are socially organized in qualitative interview data. v2.0 replaces the earlier scalar
+  intensity model with a disaggregated relational model (justice dimensions, relational configuration,
+  vulnerability, residue, audit trail) and ships with an inter-coder reliability study (two blind LLM
+  coders and two independent human coders) establishing a three-tier reliability profile.
+keywords:
+  - relational justice
+  - qualitative interview analysis
+  - inter-coder reliability
+  - computational social science
+  - recognition theory
+  - digital humanities
+version: "2.0.0"
+date-released: "2026-06-06"
+license: "MIT"
+# doi: "REPLACE_WITH_ZENODO_CONCEPT_DOI"   # <-- add after the first Zenodo release (repo currently has GitHub releases but no Zenodo DOI yet)

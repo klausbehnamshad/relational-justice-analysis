@@ -1,0 +1,90 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/klausbehnamshad/relational-justice-analysis/schema/rja_relational_v1.3.schema.json",
+  "title": "RJA Relational Annotation v1.3",
+  "description": "Micro-fix over v1.2. Change: the max-2 primary/secondary RANKING (which collapsed under inter-coder test) is replaced by a single flat justice_dimensions list with a rule-based notion of primacy (primary == salience 'high', derived, NOT a separate judgment). Coders list only dimensions with salience >= medium. Plus: asymmetry_type gets an ordered tie-break rule, and voice is tightened (see manual). relation_type, the vulnerability object, and stance_primary+flags are unchanged from v1.2.",
+  "type": "object",
+  "required": ["turn_id", "charter_version", "justice_dimensions", "relational_configuration", "audit"],
+  "additionalProperties": false,
+  "properties": {
+    "turn_id": {"type": "integer"},
+    "doc_id": {"type": "string"},
+    "charter_version": {"type": "string", "const": "1.3"},
+    "relation_to_previous": {
+      "type": ["string", "null"],
+      "enum": ["continuation", "escalation", "shift", "reversal", "withdrawal", "deflection", null]
+    },
+
+    "justice_dimensions": {
+      "type": "array",
+      "description": "Flat list, no count cap. List a dimension ONLY if its salience is medium or high (do not list low-salience echoes). 'Primary' is derived = the subset with salience 'high'; it is NOT coded separately. vulnerability is NOT here (own object).",
+      "items": {
+        "type": "object",
+        "required": ["type", "salience", "valence", "confidence"],
+        "additionalProperties": false,
+        "properties": {
+          "type": {"enum": ["recognition", "redistribution", "representation", "dignity", "voice", "access", "justification"]},
+          "salience": {"enum": ["medium", "high"]},
+          "valence": {"enum": ["affirmed", "at_stake", "denied", "ambivalent"]},
+          "confidence": {"enum": ["low", "medium", "high"]}
+        }
+      }
+    },
+
+    "vulnerability": {
+      "type": ["object", "null"],
+      "required": ["exposure", "salience", "confidence"],
+      "additionalProperties": false,
+      "properties": {
+        "exposure": {"enum": ["acute", "chronic", "latent"]},
+        "source": {"type": "array", "items": {"enum": ["legal", "economic", "affective", "institutional", "familial", "health", "mixed"]}},
+        "salience": {"enum": ["low", "medium", "high"]},
+        "confidence": {"enum": ["low", "medium", "high"]}
+      }
+    },
+
+    "relational_configuration": {
+      "type": "object",
+      "required": ["self_positioning", "other_positioning", "relation_type", "asymmetry_type", "stance_primary"],
+      "additionalProperties": false,
+      "properties": {
+        "self_positioning": {"type": "string"},
+        "other_positioning": {"type": "string"},
+        "analyst_positioning": {"type": "string"},
+        "relation_type": {"enum": ["gatekeeping", "dependency", "anticipatory_gatekeeping", "supportive_recognition", "multi_institutional_configuration", "unspecified"]},
+        "asymmetry_type": {"enum": ["justification_asymmetry", "recognition_asymmetry", "voice_asymmetry", "resource_asymmetry", "definitional_power", "none"]},
+        "beneficiary": {"type": "string"},
+        "stance_primary": {"enum": ["contesting", "accommodating", "affirming", "ambivalent"]},
+        "stance_flags": {"type": "array", "items": {"enum": ["enduring", "legitimating", "desiring", "resigned", "strategic"]}},
+        "relation_residue": {"type": ["string", "null"]}
+      }
+    },
+
+    "residue": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["type", "explanation", "charter_revision_candidate"],
+        "additionalProperties": false,
+        "properties": {
+          "type": {"enum": ["disfluency", "register_mismatch", "hermeneutical_gap", "strategic_reticence", "affective_overload", "relation_type_misfit"]},
+          "explanation": {"type": "string"},
+          "charter_revision_candidate": {"type": "boolean"}
+        }
+      }
+    },
+
+    "audit": {
+      "type": "object",
+      "required": ["evidence_quote", "rationale", "overall_uncertainty"],
+      "additionalProperties": false,
+      "properties": {
+        "evidence_quote": {"type": "string"},
+        "rationale": {"type": "string"},
+        "overall_uncertainty": {"enum": ["low", "medium", "high"]},
+        "coder_id": {"type": "string"},
+        "revision_history": {"type": "array", "items": {"type": "object"}}
+      }
+    }
+  }
+}

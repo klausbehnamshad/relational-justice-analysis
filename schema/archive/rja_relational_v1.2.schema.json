@@ -1,0 +1,119 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/klausbehnamshad/relational-justice-analysis/schema/rja_relational_v1.2.schema.json",
+  "title": "RJA Relational Annotation v1.2",
+  "description": "Hardened, slimmed annotation. Changes vs v1.1: (1) vulnerability removed from the valence system into its own exposure/source object; (2) relation_type gains anticipatory_gatekeeping, supportive_recognition, multi_institutional_configuration; (3) dimensions split into primary (max 2) and secondary (max 2); (4) speaker_stance -> stance_primary + stance_flags; (5) residue carries a charter_revision_candidate flag governed by a corpus-level repetition rule. Bamberg positioning and the audit trail are PRESERVED (auditability is the method's core asset).",
+  "type": "object",
+  "required": ["turn_id", "charter_version", "primary_dimensions", "relational_configuration", "audit"],
+  "additionalProperties": false,
+  "properties": {
+    "turn_id": {"type": "integer"},
+    "doc_id": {"type": "string"},
+    "charter_version": {"type": "string", "const": "1.2"},
+    "relation_to_previous": {
+      "type": ["string", "null"],
+      "enum": ["continuation", "escalation", "shift", "reversal", "withdrawal", "deflection", null]
+    },
+
+    "primary_dimensions": {
+      "type": "array",
+      "maxItems": 2,
+      "description": "At most TWO. A dimension may be primary only if explicitly articulated OR made necessary by a central relational pattern. vulnerability is NOT a dimension here (see `vulnerability`).",
+      "items": {"$ref": "#/definitions/dimension"}
+    },
+    "secondary_dimensions": {
+      "type": "array",
+      "maxItems": 2,
+      "description": "Optional. At most TWO. Dimensions that resonate but are not central.",
+      "items": {"$ref": "#/definitions/dimension"}
+    },
+
+    "vulnerability": {
+      "description": "Exposure/position category, NOT a claim dimension. No valence. Null if not present.",
+      "type": ["object", "null"],
+      "required": ["exposure", "salience", "confidence"],
+      "additionalProperties": false,
+      "properties": {
+        "exposure": {"enum": ["acute", "chronic", "latent"]},
+        "source": {
+          "type": "array",
+          "items": {"enum": ["legal", "economic", "affective", "institutional", "familial", "health", "mixed"]}
+        },
+        "salience": {"enum": ["low", "medium", "high"]},
+        "confidence": {"enum": ["low", "medium", "high"]}
+      }
+    },
+
+    "relational_configuration": {
+      "type": "object",
+      "required": ["self_positioning", "other_positioning", "relation_type", "asymmetry_type", "stance_primary"],
+      "additionalProperties": false,
+      "properties": {
+        "self_positioning": {"type": "string", "description": "Bamberg L1: how the speaker positions herself."},
+        "other_positioning": {"type": "string", "description": "Bamberg L2: the NARRATED relation (speaker's framing of the other/institution)."},
+        "analyst_positioning": {"type": "string", "description": "Bamberg L3: analyst's own reconstruction, marked as analytic. Optional but recommended."},
+        "relation_type": {
+          "enum": ["gatekeeping", "dependency", "anticipatory_gatekeeping", "supportive_recognition", "multi_institutional_configuration", "unspecified"]
+        },
+        "asymmetry_type": {
+          "enum": ["justification_asymmetry", "recognition_asymmetry", "voice_asymmetry", "resource_asymmetry", "definitional_power", "none"]
+        },
+        "beneficiary": {"type": "string"},
+        "stance_primary": {
+          "enum": ["contesting", "accommodating", "affirming", "ambivalent"],
+          "description": "Coarse, codable stance. Fine distinctions go to stance_flags."
+        },
+        "stance_flags": {
+          "type": "array",
+          "items": {"enum": ["enduring", "legitimating", "desiring", "resigned", "strategic"]},
+          "description": "Optional richer markers (legitimating/desiring = Foucault-Butler / Berlant)."
+        },
+        "relation_residue": {"type": ["string", "null"]}
+      }
+    },
+
+    "residue": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["type", "explanation", "charter_revision_candidate"],
+        "additionalProperties": false,
+        "properties": {
+          "type": {"enum": ["disfluency", "register_mismatch", "hermeneutical_gap", "strategic_reticence", "affective_overload", "relation_type_misfit"]},
+          "explanation": {"type": "string"},
+          "charter_revision_candidate": {
+            "type": "boolean",
+            "description": "Nomination only. Becomes an actual charter revision ONLY if the same residue recurs in >=3 independent turns OR >=2 independent interviews AND is not explained by an existing category (corpus-level gate, see charter)."
+          }
+        }
+      }
+    },
+
+    "audit": {
+      "type": "object",
+      "required": ["evidence_quote", "rationale", "overall_uncertainty"],
+      "additionalProperties": false,
+      "properties": {
+        "evidence_quote": {"type": "string"},
+        "rationale": {"type": "string"},
+        "overall_uncertainty": {"enum": ["low", "medium", "high"]},
+        "coder_id": {"type": "string"},
+        "revision_history": {"type": "array", "items": {"type": "object"}}
+      }
+    }
+  },
+
+  "definitions": {
+    "dimension": {
+      "type": "object",
+      "required": ["type", "salience", "valence", "confidence"],
+      "additionalProperties": false,
+      "properties": {
+        "type": {"enum": ["recognition", "redistribution", "representation", "dignity", "voice", "access", "justification"]},
+        "salience": {"enum": ["low", "medium", "high"]},
+        "valence": {"enum": ["affirmed", "at_stake", "denied", "ambivalent"]},
+        "confidence": {"enum": ["low", "medium", "high"]}
+      }
+    }
+  }
+}

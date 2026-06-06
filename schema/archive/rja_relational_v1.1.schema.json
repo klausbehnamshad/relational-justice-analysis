@@ -1,0 +1,106 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/klausbehnamshad/relational-justice-analysis/schema/rja_relational_v1.1.schema.json",
+  "title": "RJA Relational Annotation v1.1",
+  "description": "Per-turn relational justice annotation. Replaces the scalar justice_score of v3.1 with a disaggregated profile + relational configuration + typed residue + audit trail. Governed by justice_charter_v1.1.yaml. NOTE: cross-dimension aggregation into a single score is prohibited by the charter and intentionally NOT representable in this schema.",
+  "type": "object",
+  "required": ["turn_id", "charter_version", "justice_dimensions", "relational_configuration", "audit"],
+  "additionalProperties": false,
+  "properties": {
+    "turn_id": {
+      "type": "integer",
+      "description": "Anchor into the immutable Turn stream (core/datamodel.py). Required even in minimal v1.1 for forward-compatibility with the deferred trajectory layer."
+    },
+    "doc_id": { "type": "string" },
+    "charter_version": { "type": "string", "const": "1.1" },
+
+    "relation_to_previous": {
+      "description": "Deferred trajectory anchor. Optional/empty in minimal v1.1; reserved so the sequence layer can be assembled later WITHOUT re-coding.",
+      "type": ["string", "null"],
+      "enum": ["continuation", "escalation", "shift", "reversal", "withdrawal", "deflection", null]
+    },
+
+    "justice_dimensions": {
+      "type": "array",
+      "description": "Disaggregated profile. NEVER summed across entries. Direction lives in `valence`.",
+      "items": {
+        "type": "object",
+        "required": ["type", "salience", "valence", "confidence"],
+        "additionalProperties": false,
+        "properties": {
+          "type": { "enum": ["recognition", "redistribution", "representation", "dignity", "voice", "access", "vulnerability", "justification"] },
+          "salience": { "enum": ["absent", "low", "medium", "high"] },
+          "valence": { "enum": ["affirmed", "at_stake", "denied", "ambivalent"] },
+          "confidence": { "enum": ["low", "medium", "high"], "description": "PER-FIELD coder confidence." }
+        }
+      }
+    },
+
+    "relational_configuration": {
+      "type": "object",
+      "required": ["self_positioning", "other_positioning", "analyst_positioning", "relation_type", "asymmetry"],
+      "additionalProperties": false,
+      "properties": {
+        "self_positioning":   { "type": "string", "description": "How the speaker positions themselves (Bamberg level 1)." },
+        "other_positioning":  { "type": "string", "description": "The NARRATED relation: how the speaker positions the other/institution (level 2)." },
+        "analyst_positioning":{ "type": "string", "description": "The analyst's reconstruction, EXPLICITLY marked as analytic, not as the speaker's claim (level 3)." },
+        "relation_type": { "enum": ["dependency", "gatekeeping", "peer", "custodial", "contractual", "kinship_obligation", "unspecified"] },
+        "asymmetry": {
+          "type": "object",
+          "required": ["type", "beneficiary", "speaker_stance"],
+          "additionalProperties": false,
+          "properties": {
+            "type": { "enum": ["justification_asymmetry", "recognition_asymmetry", "voice_asymmetry", "resource_asymmetry", "definitional_power", "none"] },
+            "beneficiary": { "type": "string", "description": "In whose favour the asymmetry runs, as narrated." },
+            "speaker_stance": { "enum": ["contesting", "enduring", "legitimating", "desiring", "ambivalent"], "description": "'legitimating'/'desiring' mark Foucault-Butler normalization / Berlant cruel-optimism points." }
+          }
+        },
+        "relation_residue": {
+          "type": ["string", "null"],
+          "description": "Set when the relation does not fit any available relation_type (charter relational_vocabulary governance = closed-with-residue)."
+        }
+      }
+    },
+
+    "residue": {
+      "type": "array",
+      "description": "Typed residue. A finding, not an error. May be empty.",
+      "items": {
+        "type": "object",
+        "required": ["type", "explanation"],
+        "additionalProperties": false,
+        "properties": {
+          "type": { "enum": ["disfluency", "register_mismatch", "hermeneutical_gap", "strategic_reticence", "affective_overload", "relation_type_misfit"] },
+          "explanation": { "type": "string" },
+          "possible_charter_revision": { "type": ["string", "null"], "description": "If this residue suggests a missing dimension/relation type -> feeds the versioning loop." }
+        }
+      }
+    },
+
+    "audit": {
+      "type": "object",
+      "required": ["evidence_quote", "rationale", "overall_uncertainty"],
+      "additionalProperties": false,
+      "properties": {
+        "evidence_quote": { "type": "string", "description": "Verbatim span(s) grounding the coding." },
+        "rationale": { "type": "string" },
+        "overall_uncertainty": { "enum": ["low", "medium", "high"], "description": "TURN-LEVEL global confidence in the whole coding. Distinct from per-dimension `confidence`." },
+        "coder_id": { "type": "string" },
+        "revision_history": {
+          "type": "array",
+          "description": "Required when coding is automated and the abductive loop revised fields. Each entry records a field change across loop passes.",
+          "items": {
+            "type": "object",
+            "required": ["pass", "field", "from", "to"],
+            "properties": {
+              "pass": { "type": "integer" },
+              "field": { "type": "string" },
+              "from": {},
+              "to": {}
+            }
+          }
+        }
+      }
+    }
+  }
+}
